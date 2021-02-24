@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="700"
+        android:drawable="@drawable/cool_back"/>
+    <item android:duration="500"
+        android:drawable="@drawable/cool_back2"/>
+    <item android:duration="700"
+        android:drawable="@drawable/cool_back3"/>
+</animation-list>
