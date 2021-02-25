@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/black"
+    android:id="@+id/dfn_action_bar">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/death_note_action_bar_w">
+    </ImageView>
+
+</androidx.appcompat.widget.Toolbar>

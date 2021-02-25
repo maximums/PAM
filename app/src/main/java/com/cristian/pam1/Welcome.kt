@@ -1,27 +1,34 @@
 package com.cristian.pam1
 
 import android.content.Intent
-import android.graphics.drawable.AnimationDrawable
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.VideoView
+import com.cristian.pam1.feed.Second
 
 class Welcome : AppCompatActivity() {
 
+    private lateinit var death_note_op: VideoView
+    private val PATH: String = "android.resource://com.cristian.pam1/"+R.raw.df_back
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val constraintLayout: ConstraintLayout = findViewById(R.id.background_view)
-        val anim = constraintLayout.background as AnimationDrawable
-        anim.setEnterFadeDuration(500)
-        anim.setExitFadeDuration(700)
-        anim.start()
-
+        death_note_op = findViewById(R.id.dfn_op)
+        val uri: Uri = Uri.parse(PATH)
+        death_note_op.setVideoURI(uri)
+        death_note_op.start()
+        death_note_op.setOnPreparedListener { mp: MediaPlayer? ->
+            if (mp != null) {
+                mp.isLooping = true
+            }
+        }
+        death_note_op
     }
 
     fun next(view: View) {
@@ -34,8 +41,17 @@ class Welcome : AppCompatActivity() {
     }
 
     override fun onResume() {
+        death_note_op.resume()
         super.onResume()
-        val textView: TextView = findViewById(R.id.textView)
-        textView.text= intent.getStringExtra("MESSAGE")
+    }
+
+    override fun onPause() {
+        death_note_op.suspend()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        death_note_op.stopPlayback()
+        super.onDestroy()
     }
 }

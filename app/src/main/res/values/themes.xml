@@ -13,7 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="my_senapi" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    <style name="my_senapi" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--        <item name="android:textViewStyle"></item>-->
+        <item name="fontFamily">@font/dancing_font</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
