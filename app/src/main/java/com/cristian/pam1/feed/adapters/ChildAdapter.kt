@@ -15,9 +15,7 @@ class ChildAdapter(private val children: List<ChildModel>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ChildModelViewHolder, position: Int) {
-        val child = children[position]
-        holder.imageView.setImageResource(child.image)
-        holder.textView.text = child.title
+        holder.bind(children[position])
     }
 
     override fun getItemCount() = children.size

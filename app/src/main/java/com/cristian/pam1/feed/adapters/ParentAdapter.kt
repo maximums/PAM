@@ -20,15 +20,6 @@ class ParentAdapter(private val parents: List<ParentModel>) : RecyclerView.Adapt
     override fun getItemCount() = parents.size
 
     override fun onBindViewHolder(holder: ParentModelViewHolder, position: Int) {
-        val parent = parents[position]
-        holder.textView.text = parent.title
-        val childLayoutManager = LinearLayoutManager(
-            holder.recyclerView.context, LinearLayoutManager.HORIZONTAL, false)
-        childLayoutManager.initialPrefetchItemCount = 4
-        holder.recyclerView.apply {
-            layoutManager = childLayoutManager
-            adapter = ChildAdapter(parent.children)
-            setRecycledViewPool(viewPool)
-        }
+        holder.bind(parents[position])
     }
 }
