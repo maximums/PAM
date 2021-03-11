@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cristian.pam1" >
+    package="com.cristian.pam1">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/my_ic_launcher"
+        android:icon="@mipmap/dfn_apple"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/my_ic_launcher_round"
+        android:roundIcon="@mipmap/dfn_apple_round"
         android:supportsRtl="true"
-        android:theme="@style/my_senapi" >
-        <activity android:name=".Second"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Welcome"
+        android:theme="@style/my_senapi">
+        <activity android:name=".feed.Second"></activity>
+        <activity
+            android:name=".Welcome"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -22,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

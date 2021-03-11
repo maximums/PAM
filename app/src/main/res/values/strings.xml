@@ -1,7 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PAM1</string>
+    <string name="app_name">Hopes</string>
     <string name="next">Next</string>
     <string name="some_input">Some input</string>
     <string name="hello">Hello</string>
     <string name="submit">Submit</string>
+    <string name="welcome">Welcome</string>
+    <string name="chat">Chat</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
 </resources>
