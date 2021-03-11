@@ -26,7 +26,7 @@ class Welcome : AppCompatActivity() {
         setContentView(binding.root)
         val uri: Uri = Uri.parse(PATH)
 
-        death_note_op = findViewById(R.id.dfn_op)
+        death_note_op = binding.dfnOp
         death_note_op.setVideoURI(uri)
         death_note_op.start()
         death_note_op.setOnPreparedListener { mp: MediaPlayer? ->

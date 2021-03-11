@@ -32,8 +32,8 @@ class Second : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        drawer = findViewById(R.id.drawer_layout)
-        val navigationView: NavigationView = findViewById(R.id.navigation)
+        drawer = binding.drawerLayout
+        val navigationView: NavigationView = binding.navigation
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_chat -> {
@@ -61,7 +61,7 @@ class Second : AppCompatActivity() {
         viewManager = LinearLayoutManager(this)
         viewAdapter = ParentAdapter(ParentDataFactory.getParents(40))
 
-        recyclerView = findViewById<RecyclerView>(R.id.feed_recycler_view).apply {
+        recyclerView = binding.feedRecyclerView.apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
