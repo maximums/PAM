@@ -7,28 +7,48 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.VideoView
+import com.cristian.pam1.databinding.ActivityMainBinding
 import com.cristian.pam1.feed.Second
 
 class Welcome : AppCompatActivity() {
 
     private lateinit var death_note_op: VideoView
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var mute_unmute: ImageButton
     private val PATH: String = "android.resource://com.cristian.pam1/"+R.raw.df_back
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val uri: Uri = Uri.parse(PATH)
 
         death_note_op = findViewById(R.id.dfn_op)
-        val uri: Uri = Uri.parse(PATH)
         death_note_op.setVideoURI(uri)
         death_note_op.start()
         death_note_op.setOnPreparedListener { mp: MediaPlayer? ->
             if (mp != null) {
                 mp.isLooping = true
+                mediaPlayer = mp
             }
         }
-        death_note_op
+
+        mute_unmute = findViewById(R.id.mute_unmute)
+        mute_unmute.setOnClickListener{
+            if (mute_unmute.tag == "Unmute") {
+                mute_unmute.tag = "Mute"
+                mute_unmute.setImageResource(R.drawable.ic_unmute)
+                mediaPlayer.setVolume(1f, 1f)
+            }
+            else {
+                mute_unmute.tag = "Unmute"
+                mute_unmute.setImageResource(R.drawable.ic_mute)
+                mediaPlayer.setVolume(0f, 0f)
+            }
+        }
     }
 
     fun next(view: View) {
@@ -54,4 +74,5 @@ class Welcome : AppCompatActivity() {
         death_note_op.stopPlayback()
         super.onDestroy()
     }
+
 }

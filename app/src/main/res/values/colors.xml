@@ -9,6 +9,7 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_grey">#2A2A2A</color>
+    <color name="full_tr">#00000000</color>
     <color name="grey_tr">#803D3D3D</color>
     <color name="grey_light">#EFEFEF</color>
     <color name="grey">#3D3D3D</color>
