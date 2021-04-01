@@ -15,7 +15,12 @@ import com.cristian.pam1.feed.fragments.FragmentChat
 import com.cristian.pam1.feed.fragments.FragmentProfile
 import com.cristian.pam1.feed.fragments.FragmentSettings
 import com.cristian.pam1.feed.models.ParentDataFactory
+import com.cristian.pam1.network.Communication
+import com.cristian.pam1.network.Service
+import com.cristian.pam1.network.models.SearchResult
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class Second : AppCompatActivity() {
 
@@ -24,6 +29,7 @@ class Second : AppCompatActivity() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var drawer: DrawerLayout
+    private lateinit var  service: Communication
 
     private val uri: String = "@drawable/l"
 
@@ -33,6 +39,8 @@ class Second : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         drawer = binding.drawerLayout
+        service = Communication()
+
         val navigationView: NavigationView = binding.navigation
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -65,9 +73,27 @@ class Second : AppCompatActivity() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+        getSearchResult("apollo 11", null)
 
     }
 
+    private fun getSearchResult(term: String, query: Map<String, String>?) {
+        GlobalScope.launch {
+            kotlin.runCatching {
+                service.search(term, query)
+            }.onSuccess {
+                handleAPIData(it)
+            }.onFailure {
+                print(it)
+            }
+        }
+    }
+
+    private fun handleAPIData(data: ArrayList<SearchResult>) {
+        val dataSet = data.map{
+            print("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n${ it.collection }")
+        }
+    }
 
     override fun onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START)
