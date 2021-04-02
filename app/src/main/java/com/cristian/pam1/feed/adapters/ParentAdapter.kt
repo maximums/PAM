@@ -7,7 +7,7 @@ import com.cristian.pam1.databinding.ParentRecyclerBinding
 import com.cristian.pam1.feed.models.ParentModel
 import com.cristian.pam1.feed.viewHolders.ParentModelViewHolder
 
-class ParentAdapter(private val parents: List<ParentModel>) :
+class ParentAdapter(private var parents: List<ParentModel>) :
     RecyclerView.Adapter<ParentModelViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -26,5 +26,10 @@ class ParentAdapter(private val parents: List<ParentModel>) :
 
     override fun onBindViewHolder(holder: ParentModelViewHolder, position: Int) {
         holder.bind(parents[position])
+    }
+
+    fun updateDataSet(dataSet: Array<ParentModel>) {
+        this.parents = dataSet.asList()
+        notifyDataSetChanged()
     }
 }

@@ -37,7 +37,7 @@ class Communication {
             .build()
     }
 
-    suspend fun search(term: String, query: Map<String, String>? = null): ArrayList<SearchResult> {
+    suspend fun search(term: String, query: Map<String, String>?): ArrayList<SearchResult> {
         return service.search(term, query)
     }
 }
