@@ -1,4 +1,4 @@
-package com.cristian.pam1.feed.fragments
+package com.cristian.pam1.ui.view.feed.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

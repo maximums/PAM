@@ -1,14 +1,14 @@
-package com.cristian.pam1.feed.fragments
+package com.cristian.pam1.ui.view.feed.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.cristian.pam1.databinding.FragmentSettingsBinding
+import com.cristian.pam1.databinding.FragmentProfileBinding
 
-class FragmentSettings : Fragment() {
-    private lateinit var binding: FragmentSettingsBinding
+class FragmentProfile : Fragment() {
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,7 +16,7 @@ class FragmentSettings : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentSettingsBinding.inflate(inflater)
+        binding = FragmentProfileBinding.inflate(inflater)
         return binding.root
     }
 }
