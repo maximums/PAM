@@ -2,4 +2,39 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph" />
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_chat">
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.cristian.pam1.ui.view.feed.fragments.FragmentChat"
+        android:label="FragmentChat" >
+        <action
+            android:id="@+id/action_fragmentChat_to_fragmentProfile"
+            app:destination="@+id/nav_profile" />
+        <action
+            android:id="@+id/action_fragmentChat_to_fragmentSettings"
+            app:destination="@+id/nav_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.cristian.pam1.ui.view.feed.fragments.FragmentProfile"
+        android:label="FragmentProfile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentChat"
+            app:destination="@+id/nav_profile" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentSettings"
+            app:destination="@+id/nav_settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.cristian.pam1.ui.view.feed.fragments.FragmentSettings"
+        android:label="FragmentSettings" >
+        <action
+            android:id="@+id/action_fragmentSettings_to_fragmentChat"
+            app:destination="@+id/nav_profile" />
+        <action
+            android:id="@+id/action_fragmentSettings_to_fragmentProfile"
+            app:destination="@+id/nav_profile" />
+    </fragment>
+</navigation>
