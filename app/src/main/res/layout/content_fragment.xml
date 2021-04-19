@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_grey"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/action_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:layout_below="@+id/include"
+                android:layout_alignEnd="@+id/input"
+                android:layout_gravity="bottom"
+                android:id="@+id/search_button"
+                android:text="@string/Search"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@color/full_tr" />
+
+            <EditText
+                android:layout_below="@+id/include"
+                android:id="@+id/input"
+                android:layout_width="fill_parent"
+                android:textColorHint="@color/white"
+                android:hint="@string/enter_category"
+                android:textColor="@color/white"
+                android:layout_height="60dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/input"
+            android:id="@+id/feed_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

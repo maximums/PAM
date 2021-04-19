@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/dfn_apple_round"
         android:supportsRtl="true"
         android:theme="@style/my_senapi">
-        <activity android:name=".ui.view.Second"></activity>
+        <activity android:name=".ui.view.FragmentHolderActivity" />
         <activity
             android:name=".ui.view.Welcome"
             android:configChanges="orientation"

@@ -32,7 +32,7 @@ class Welcome : AppCompatActivity() {
 
     }
 
-    fun next(view: View) = startActivity(Intent(this, Second::class.java))
+    fun next(view: View) = startActivity(Intent(this, FragmentHolderActivity::class.java))
 
     private fun initBackgroundOp(uri: Uri) {
         death_note_op.setVideoURI(uri)
