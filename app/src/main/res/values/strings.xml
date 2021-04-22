@@ -13,4 +13,11 @@
     <string name="enter_category">Enter content category</string>
     <string name="content">Content</string>
     <string name="Search">Search</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="title">Title: </string>
+    <string name="description">Description: </string>
+    <string name="age_rating">Age Rating: </string>
+    <string name="average_rating">Average Rating: </string>
+    <string name="status">Status: </string>
 </resources>

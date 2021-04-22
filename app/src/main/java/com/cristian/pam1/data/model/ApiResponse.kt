@@ -3,7 +3,7 @@ package com.cristian.pam1.data.model
 import com.google.gson.annotations.SerializedName
 import java.net.URL
 
-class APIResponse(
+class ApiResponse(
     val data: ArrayList<ContentObj>,
     val meta: Meta,
     val links: Links
@@ -33,6 +33,12 @@ class APIResponse(
         val canonicalTitle: String?,
         @SerializedName("description")
         val description: String?,
-        val posterImage: PosterImage
+        val posterImage: PosterImage,
+        @SerializedName("averageRating")
+        val averageRating: String?,
+        @SerializedName("ageRatingGuide")
+        val ageRatingGuide: String?,
+        @SerializedName("status")
+        val status: String?
     )
 }

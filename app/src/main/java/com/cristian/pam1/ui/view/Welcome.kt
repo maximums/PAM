@@ -24,6 +24,10 @@ class Welcome : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.next.setOnClickListener {
+            startActivity(Intent(this, FragmentHolderActivity::class.java))
+        }
+
         death_note_op = binding.dfnOp
         initBackgroundOp(Uri.parse(PATH))
 
@@ -32,7 +36,7 @@ class Welcome : AppCompatActivity() {
 
     }
 
-    fun next(view: View) = startActivity(Intent(this, FragmentHolderActivity::class.java))
+//    fun next(view: View) = startActivity(Intent(this, FragmentHolderActivity::class.java))
 
     private fun initBackgroundOp(uri: Uri) {
         death_note_op.setVideoURI(uri)

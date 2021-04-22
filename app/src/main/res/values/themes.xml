@@ -13,9 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
+    
     <style name="my_senapi" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-<!--        <item name="android:textViewStyle"></item>-->
         <item name="fontFamily">@font/dancing_font</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -23,4 +22,19 @@
         <item name="android:colorBackground">@color/dark_grey</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
+
+    <style name="CardViewWithBlackjackAnd..." parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="shapeAppearance">@style/CardViewWithBlackjackAnd... </item>
+    </style>
+
+    <style name="AlsoCardViewWithBlack..." parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+
+    </style>
+
 </resources>

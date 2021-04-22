@@ -9,13 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cristian.pam1.data.repository.ContentRepository
 import com.cristian.pam1.databinding.ContentFragmentBinding
 import com.cristian.pam1.ui.feed.adapters.FeedRecyclerViewAdapter
 import com.cristian.pam1.ui.viewmodel.ContentFragmentViewModel
 import com.cristian.pam1.ui.viewmodel.ContentFragmentViewModelFactory
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
+
 
 class ContentFragment : Fragment() {
+
+    private val factory by inject<ContentFragmentViewModelFactory> { parametersOf(this) }
+
     private lateinit var binding: ContentFragmentBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: FeedRecyclerViewAdapter
@@ -30,9 +35,6 @@ class ContentFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding =  ContentFragmentBinding.inflate(inflater)
         searchInit()
-
-        val repository = ContentRepository()
-        val factory = ContentFragmentViewModelFactory(repository)
         initRecyclerView()
 
         contentFragmentViewModel = ViewModelProviders.of(this, factory).get(ContentFragmentViewModel::class.java)
