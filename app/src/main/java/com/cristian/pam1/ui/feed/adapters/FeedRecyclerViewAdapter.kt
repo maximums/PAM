@@ -14,7 +14,6 @@ class FeedRecyclerViewAdapter(private var dataSet:List<FeedItem>) : RecyclerView
             parent,
             false
         )
-
         return FeedItemViewHolder(binding)
     }
 
