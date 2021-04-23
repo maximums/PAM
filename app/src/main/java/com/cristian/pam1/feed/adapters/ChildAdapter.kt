@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cristian.pam1.databinding.FeedCellLayoutBinding
 import com.cristian.pam1.feed.models.ChildModel
+import com.cristian.pam1.feed.models.ParentModel
 import com.cristian.pam1.feed.viewHolders.ChildModelViewHolder
 
-class ChildAdapter(private val children: List<ChildModel>) : RecyclerView.Adapter<ChildModelViewHolder>() {
+class ChildAdapter(private var children: List<ChildModel>) : RecyclerView.Adapter<ChildModelViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildModelViewHolder {
         val binding = FeedCellLayoutBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -22,4 +23,9 @@ class ChildAdapter(private val children: List<ChildModel>) : RecyclerView.Adapte
     }
 
     override fun getItemCount() = children.size
+
+    fun updateDataSet(dataSet: Array<ChildModel>) {
+        this.children = dataSet.asList()
+        notifyDataSetChanged()
+    }
 }

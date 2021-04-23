@@ -1,6 +1,7 @@
 package com.cristian.pam1.feed.models
 
 import com.cristian.pam1.R
+import java.net.URL
 import java.util.*
 
 object ChildDataFactory{
@@ -21,7 +22,7 @@ object ChildDataFactory{
     fun getChildren(count : Int) : List<ChildModel>{
         val children = mutableListOf<ChildModel>()
         repeat(count){
-            val child = ChildModel(randomImage(), randomTitle())
+            val child = ChildModel(null, randomTitle())
             children.add(child)
         }
         return children

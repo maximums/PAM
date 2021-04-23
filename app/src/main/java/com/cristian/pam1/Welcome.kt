@@ -9,8 +9,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.VideoView
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.cristian.pam1.databinding.ActivityMainBinding
 import com.cristian.pam1.feed.Second
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 class Welcome : AppCompatActivity() {
 
@@ -52,7 +55,7 @@ class Welcome : AppCompatActivity() {
     }
 
     fun next(view: View) {
-        val input: EditText = findViewById(R.id.text_input)
+        val input: EditText = findViewById(binding.root.text_input.id)
         val message: String = input.text.toString()
         val intent = Intent(this, Second::class.java).apply {
             putExtra("MESSAGE", message)
