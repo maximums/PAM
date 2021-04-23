@@ -14,18 +14,26 @@ import com.cristian.pam1.feed.adapters.ParentAdapter
 import com.cristian.pam1.feed.fragments.FragmentChat
 import com.cristian.pam1.feed.fragments.FragmentProfile
 import com.cristian.pam1.feed.fragments.FragmentSettings
+import com.cristian.pam1.feed.models.ChildModel
 import com.cristian.pam1.feed.models.ParentDataFactory
+import com.cristian.pam1.feed.models.ParentModel
+import com.cristian.pam1.network.Communication
+import com.cristian.pam1.network.Service
+import com.cristian.pam1.network.models.SearchResult
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class Second : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewAdapter: ParentAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var drawer: DrawerLayout
+    private lateinit var  service: Communication
 
-    private val uri: String = "@drawable/l"
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +41,8 @@ class Second : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         drawer = binding.drawerLayout
+        service = Communication()
+
         val navigationView: NavigationView = binding.navigation
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -65,9 +75,41 @@ class Second : AppCompatActivity() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+        getSearchResult("apollo 11", null)
 
     }
 
+    private fun getSearchResult(term: String, query: Map<String, String>?) {
+        GlobalScope.launch {
+            kotlin.runCatching {
+                service.search(term, query)
+            }.onSuccess {
+                handleAPIData(it)
+            }.onFailure {
+                print("||||||||||||||||||||||||||||||||||||||||||||||||||FAILURE||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n$it")
+            }
+        }
+    }
+
+    private fun handleAPIData(data: ArrayList<SearchResult>) {
+        val dataSet = data.map{
+            ChildModel(
+                it.collection.items.href,
+                it.collection.items.data[0].title
+            )
+        }.toTypedArray()
+
+        MainScope().launch {
+            viewAdapter.updateDataSet(
+                arrayOf(
+                    ParentModel(
+                    "Title",
+                    dataSet.asList()
+                    )
+                )
+            )
+        }
+    }
 
     override fun onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START)
