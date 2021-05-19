@@ -8,8 +8,7 @@ class PosterImage(
     val small: URL?,
     val medium: URL?,
     val large: URL?,
-    val original: URL?,
-    val meta: MetaD
+    val original: URL?
 ) {
 
     data class MetaD(
